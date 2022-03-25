@@ -9,8 +9,8 @@ console.log(0);
 console.log(1);
 console.log(2);
 console.log(3);
-console.log(4);
- */
+console.log(4); */
+
 /*
     Usando el Ciclo For
     Es el ciclo mas compacto porque 
@@ -18,7 +18,7 @@ console.log(4);
     su cuerpo
 */
 
-console.log("----conteo con for----");
+//console.log("----conteo con for----");
 for (var i = 0; i < 5; i++) {
   //console.log(i);
 }
@@ -30,7 +30,7 @@ for (var i = 0; i < 5; i++) {
     por fuera al igual que la 
     operación iterativa
 */
-console.log("----conteo con while----");
+//console.log("----conteo con while----");
 var j = 0;
 while (j < 5) {
   //console.log(j);
@@ -46,7 +46,7 @@ while (j < 5) {
     el procedimiento de las llaves
     se ejecutará al menos una vez
 */
-console.log("----conteo con do while----");
+//console.log("----conteo con do while----");
 var k = 15;
 do {
   //console.log(k);
@@ -81,7 +81,7 @@ function elMenorDeTodos(arreglo) {
 }
 
 //Pruebas
-elMenorDeTodos([1, 2, 3, 4, 5, 6]);
+//elMenorDeTodos([1, 2, 3, 4, 5, 6]);
 
 /*
     -> Esta línea muestra el número 3
@@ -93,7 +93,23 @@ function quitarNumero(arreglo, indice) {
   nuevaLista = arreglo
     .slice(0, indice)
     .concat(arreglo.slice(indice + 1, arreglo.length));
-  console.log(nuevaLista);
+  return nuevaLista;
 }
 
+const ordenar = (arreglo) => {
+  //En este arreglo se ubicarán los número ordenadamente
+  var listaOrdenada = [];
+  //Es una copia del arreglo original, al final será una lista vacia
+  var listaRestante = [...arreglo];
+  for (; listaRestante.length > 0; ) {
+    var posicionMenor = elMenorDeTodos(listaRestante);
+    listaOrdenada.push(listaRestante[posicionMenor]);
+    listaRestante = quitarNumero(listaRestante, posicionMenor);
+    //console.log("------");
+    //console.log(listaRestante);
+    //console.log(listaOrdenada);
+  }
+  return listaOrdenada;
+};
 
+console.log(ordenar(arreglo2));
